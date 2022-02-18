@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <launch>
 
- <arg name="prompts" default="true" />
+ <arg name="prompts" default="false" />
  <arg name="robot" default="ur5e" />
  <rosparam file="$(find ur_manipulation)/config/$(arg robot).yaml"/>
  <node name="endurance_demo" pkg="ur_manipulation" type="endurance_demo"
-    respawn="false" output="screen" args="$(arg prompts robot)"/>
+    respawn="false" output="screen" args="$(arg prompts) $(arg robot)"/>
  <node name="tool_pose_publisher" pkg ="ur_manipulation" type="tool_pose_publisher.py" output="screen"/>
 </launch>

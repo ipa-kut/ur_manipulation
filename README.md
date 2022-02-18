@@ -71,6 +71,14 @@ Once done,
 4. Start this demonstrator node :       
 `roslaunch ur_manipulation seher_demo.launch`  
 
+## Simulation with PRBT
+
+1. Start moveit:
+`roslaunch prbt_moveit_config moveit_planning_execution.launch`
+
+2. Start endurance test:
+`roslaunch ur_manipulation endurance_demo.launch robot:=prbt`
+
 ## RVIZ Demo
 
 For rapid prototyping of some manipulation code, you can run a "light" version of the robot for visualization purposes only, This does not launch a sim or use any controllers, and therefore may not reflect real behaviour.

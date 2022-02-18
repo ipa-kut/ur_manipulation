@@ -56,6 +56,13 @@ bool MoveitCustomApi::comparePoses(geometry_msgs::Pose pose1, geometry_msgs::Pos
   }
   else
   {
+    tf::Quaternion q1, q2;
+    tf::quaternionMsgToTF(pose1.orientation, q1);
+    tf::quaternionMsgToTF(pose2.orientation, q2);
+    if(tf::angleShortestPath(q1, q2) == 0)
+    {
+      return true;
+    }
     return false;
   }
 }
