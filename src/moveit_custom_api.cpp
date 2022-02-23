@@ -148,6 +148,7 @@ moveit::planning_interface::MoveGroupInterface::Plan MoveitCustomApi::getCartesi
   while(fraction<0.5)
   {
     fraction = move_group->computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+    ROS_INFO_STREAM("waypoints with reference frame: "<<move_group->getPoseReferenceFrame());
   }
   adjustTrajectoryToFixTimeSequencing(trajectory);
 

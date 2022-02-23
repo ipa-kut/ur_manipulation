@@ -96,6 +96,7 @@ int main(int argc, char **argv)
 
   ROS_INFO("Moving to ready pose");
   ret_obj.moveToNamedTarget(ready_state); // ready pose for UR5E
+  ret_obj.move_group->setPoseReferenceFrame("prbt_base");
   unsigned int seq = 0;
 
   ROS_INFO("Starting Button Masher");
@@ -103,9 +104,12 @@ int main(int argc, char **argv)
 
   geometry_msgs::Pose target_pose1;
 
-  target_pose1.position.x = 0.3;
-  target_pose1.position.y = 0.4;
-  target_pose1.position.z = 0.012;
+  // target_pose1.position.x = 0.3;
+  // target_pose1.position.y = 0.4;
+  // target_pose1.position.z = 0.012;
+  target_pose1.position.x = -0.1;
+  target_pose1.position.y = -0.45;
+  target_pose1.position.z = 0.175;
   geometry_msgs::Quaternion quat_msg;
   tf::quaternionTFToMsg(tf::createQuaternionFromRPY(angles::from_degrees(180), angles::from_degrees(0), angles::from_degrees(0)), quat_msg);
   target_pose1.orientation = quat_msg;
@@ -120,7 +124,7 @@ int main(int argc, char **argv)
     loggedButtonMash(
         &ret_obj,
         (switcher) ? target_pose2 : target_pose1,
-        0.03,
+        0.03, // press height
         (switcher) ? 1 : 2,
         logger1,
         robot + "_ros");
